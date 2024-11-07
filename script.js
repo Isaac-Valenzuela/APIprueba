@@ -34,7 +34,7 @@ function handleCredentialResponse(response) {
 // Configura el evento al cargar el script
 window.onload = function() {
     google.accounts.id.initialize({
-        client_id: "873783644575-fl0paiu75r93gm1odut64dlmtuuo1b52.apps.googleusercontent.com",
+        client_id: "193073252936-vbvttpmv0llent1msrkl2cgba9hhji41.apps.googleusercontent.com",
         callback: handleCredentialResponse
     });
     google.accounts.id.renderButton(
