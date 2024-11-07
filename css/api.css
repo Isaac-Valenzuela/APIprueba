@@ -11,14 +11,9 @@ body {
     padding: 20px;
 }
 
-header {
+header, footer {
     text-align: center;
-    margin-bottom: 20px;
-}
-
-footer {
-    text-align: center;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
 .btn {
@@ -30,7 +25,7 @@ footer {
     cursor: pointer;
 }
 
-.movie-container {
+.image-container, .character-container, .movie-container, .anime-container {
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 10px;
@@ -38,19 +33,22 @@ footer {
     text-align: center;
 }
 
-.movie img {
+.image-container img, .character img, .movie img, .anime img {
     max-width: 100%;
     border-radius: 8px;
-    max-height: 515px;
 }
 
-.movie h2 {
+.character h2, .movie h2, .anime h2 {
     margin-top: 15px;
     font-size: 24px;
     color: #333;
 }
 
-.movie p {
+.character p, .movie p, .anime p {
     margin: 5px 0;
     color: #555;
+}
+
+.movie img {
+    max-height: 515px;
 }
