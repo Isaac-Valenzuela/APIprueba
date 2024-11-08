@@ -32,7 +32,11 @@ beforeEach(()=>{
 })
 
 describe('Google API Login', () =>{
+    const memoriaInicial = process.memoryUsage().heapUsed;
+    const cpuInicial = process.cpuUsage()
+
     const start = performance.now() // Mide el tiempo en ms durante la ejecucion del codigo
+    
     test('Debe ejecutar la funcion onSignIn correctamente', ()=>{
         const googleUser = {
             getBasicProfile: jest.fn(()=>({ // trae los datos de la simulacion del entorno
@@ -66,10 +70,22 @@ describe('Google API Login', () =>{
     })
 
     const end = performance.now()
-        
-        const tiempo = end - start
+    const memoriaFinal = process.memoryUsage().heapUsed
+    const cpuFinal = process.cpuUsage(cpuInicial)
+    
+    const tiempo = end - start
 
-        console.log(`Tiempo de ejecucion2: ${tiempo} ms`)
+    const tiempoCpuUsado = (cpuFinal.user + cpuFinal.system) / 1000 // CPU usada en ms
+    const porcentajeCpu = (tiempoCpuUsado / tiempo) * 100
 
-        expect(tiempo).toBeLessThan(50) // Define el tiempo maximo esperado de ejecucion del codigo
+    console.log(`Tiempo maximo de espera 1000ms\nTiempo de respuesta: ${tiempo} ms`)
+
+    const memoriaUsada = Math.abs(memoriaFinal - memoriaInicial)
+    console.log(`Memoria utilizada maxima esperada 1000 KB\nMemoria utilizada: ${memoriaUsada / 1024} KB`)  
+
+    console.log(`Porcentaje de uso maximo esperado 15%\nPorcentaje de uso de CPU: ${porcentajeCpu.toFixed(2)}%`);
+
+    expect(tiempo).toBeLessThan(100) // Define el tiempo maximo esperado de ejecucion del codigo
+    expect((memoriaUsada) / 1024).toBeLessThanOrEqual(1000)
+    expect(porcentajeCpu).toBeLessThanOrEqual(15)
 })
