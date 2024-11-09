@@ -1,17 +1,18 @@
+// Obtiene una película aleatoria de la API y la muestra
 async function obtenerPelicula() {
     try {
-        const respuesta = await fetch("https://moviesapi.ir/api/v1/movies");
-        const datos = await respuesta.json();
+        const respuesta = await fetch("https://moviesapi.ir/api/v1/movies"); // Solicita datos a la API
+        const datos = await respuesta.json(); // Convierte la respuesta a JSON
         const peliculas = datos.data;
         const peliculaAleatoria = peliculas[Math.floor(Math.random() * peliculas.length)];
         
-        mostrarPelicula(peliculaAleatoria);
-
+        mostrarPelicula(peliculaAleatoria); // Muestra una película aleatoria
     } catch (error) {
-        console.error("Error al obtener datos de la API de Películas:", error);
+        console.error("Error al obtener datos de la API de Películas:", error); // Manejo de errores
     }
 }
 
+// Inserta la información de la película en el HTML
 function mostrarPelicula(pelicula) {
     const contenedor = document.getElementById('resultado');
     contenedor.innerHTML = `
@@ -25,6 +26,8 @@ function mostrarPelicula(pelicula) {
     `;
 }
 
+// Evento para mostrar una nueva película al hacer clic
 document.getElementById('obtener-pelicula').addEventListener('click', obtenerPelicula);
 
-obtenerPelicula(); // Cargar una película al iniciar la página
+// Muestra una película inicial al cargar la página
+obtenerPelicula();
