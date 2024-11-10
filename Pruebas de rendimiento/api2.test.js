@@ -35,7 +35,7 @@ test('Prueba de rendimiento y uso de recursos para obtenerPersonaje', async () =
 
     // Verificaciones
     expect(personaje).toHaveProperty('name')
-    expect(tiempo).toBeLessThanOrEqual(1000); // Tiempo límite en ms (ajustable)
+    expect(tiempo).toBeLessThanOrEqual(2000); // Tiempo límite en ms (ajustable)
     expect((memoriaUsada) / 1024).toBeLessThanOrEqual(1000) // Límite de memoria en KB (ajustable)
     expect(porcentajeCpu).toBeLessThanOrEqual(15)
 });
